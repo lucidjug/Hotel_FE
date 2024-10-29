@@ -10,6 +10,7 @@ import Layout from './components/Layout/Layout';
 import Dashboard from './pages/Sidebar/Dashboard';
 import DashboardLayout from './components/Layout/DashBoardLayout';
 import UserList from './pages/Sidebar/UserList';
+import FetchCustomer from './pages/Sidebar/FetchCustomer';
 import UserProfile from './pages/Sidebar/UserProfile';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import AdminRoomList from './components/AdminRoomList/AdminRoomList';
@@ -21,6 +22,7 @@ import Report from './pages/Sidebar/Report';
 import DiscountEvents from './pages/Sidebar/DiscountEvents';
 import Contact from './pages/Contact/Contact';
 import BookedRooms from './pages/Sidebar/BookedRooms';
+
 
 function App() {
   return (
@@ -117,7 +119,7 @@ function App() {
           element={
             <PrivateRoute adminOnly={true}>
               <DashboardLayout>
-                <UserList />
+                <FetchCustomer />
               </DashboardLayout>
             </PrivateRoute>
           }
