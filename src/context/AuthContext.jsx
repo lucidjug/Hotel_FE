@@ -37,8 +37,9 @@ const AuthProvider = ({ children }) => {
           await fetchAllUsersData(token);
         }
       } else {
-        console.error('Failed to fetch user data');
-      }
+        const errorResponse = await response.json(); // Lấy phản hồi lỗi từ máy chủ
+        console.error('Error fetching user data:', errorResponse); // In ra thông tin lỗi
+    }
     } catch (error) {
       console.error('Error fetching user data:', error);
     } finally {

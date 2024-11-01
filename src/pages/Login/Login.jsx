@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -15,43 +15,43 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
-    // Kiểm tra username không có khoảng trắng
-    if (/\s/.test(username)) {
-      setError('Username cannot contain spaces.');
+
+    // Kiểm tra email không có khoảng trắng
+    if (/\s/.test(email)) {
+      setError('Email cannot contain spaces.');
       return;
     }
-  
+
     try {
       const response = await fetch('http://localhost:8080/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
-  
+
         // Fetch user data after login and wait for it to finish
         await fetchUserData(data.token);
-  
+
         navigate('/dashboard'); // Chuyển hướng sau khi lấy xong thông tin người dùng
       } else {
-        setError('Login failed. Please check your username and password.');
+        setError('Login failed. Please check your email and password.');
       }
     } catch (error) {
       setError('Failed to login');
       console.error('Error:', error);
     }
   };
-  
+
 
   return (
     <section className="flex items-center justify-center bg-accent/30 h-screen relative">
-      <Link to="/" className='absolute flex items-center left-10 top-10'><IoHome size={22}/><div className='px-1 text-[17px] font-medium hover:underline'>Home</div></Link>
+      <Link to="/" className='absolute flex items-center left-10 top-10'><IoHome size={22} /><div className='px-1 text-[17px] font-medium hover:underline'>Home</div></Link>
       <div className="bg-gray-50 flex rounded-2xl shadow-2xl max-w-[900px] max-h-[500px] items-center justify-center">
         <div className="w-[380px] px-10">
           <h2 className="font-bold text-4xl text-primary h2 text-center mt-10">Login</h2>
@@ -62,10 +62,10 @@ const Login = () => {
             <input
               className="p-2 border-b border-black outline-none"
               type="text"
-              name="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <div className="relative">
@@ -79,7 +79,7 @@ const Login = () => {
                 required
               />
             </div>
-            
+
             <Link to="/" className="text-xs text-gray-500">
               <div className='hover:underline'>Forgot password?</div>
             </Link>
@@ -111,7 +111,7 @@ const Login = () => {
 
         {/* Image only visible on medium screens and larger */}
         <div className='hidden md:block h-[500px] w-[500px] overflow-hidden rounded-r-2xl'>
-          <img src={Logo} alt="" className='h-full w-full object-cover'/>
+          <img src={Logo} alt="" className='h-full w-full object-cover' />
         </div>
       </div>
     </section>

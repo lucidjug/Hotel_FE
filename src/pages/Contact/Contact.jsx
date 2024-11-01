@@ -6,7 +6,7 @@ const Contact = () => {
       <div className="container mx-auto lg:px-0">
         <h3 className="h3 text-[45px] text-white text-center py-12">Contact Us</h3>
         <p className="text-center text-lg text-white mb-8">
-          We're here to help! If you have any questions or need assistance, feel free to reach out to us.
+          We are here to help! If you have any questions or need assistance, feel free to reach out to us.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}

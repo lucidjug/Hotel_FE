@@ -10,6 +10,8 @@ const RoomProvider = ({ children }) => {
     const [kids, setKids] = useState('0 Kid');
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [fileName, setFileName] = useState(''); // Thêm trạng thái cho tên file
+    
 
     useEffect(() => {
       setTotal(Number(adults[0]) + Number(kids[0]));
@@ -32,7 +34,7 @@ const RoomProvider = ({ children }) => {
 
 
   return (
-    <RoomContext.Provider value={{ rooms, adults, setAdults, kids, setKids, handleClick, loading }}>
+    <RoomContext.Provider value={{ rooms, adults, setAdults, kids, setKids, handleClick, loading,  fileName, setFileName }}>
       {children}
     </RoomContext.Provider>
   );
