@@ -30,7 +30,7 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password, name, username, phoneNumber }),
+        body: JSON.stringify({ email, password, name, phoneNumber }),
       });
 
       if (response.ok) {
@@ -71,16 +71,7 @@ const Register = () => {
               required
             />
 
-            {/* Input username */}
-            <input
-              className="p-2 border-b border-black outline-none"
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUserName(e.target.value)}
-              required
-            />
+            
 
             {/* Input phone number */}
             <input
